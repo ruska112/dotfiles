@@ -1,4 +1,4 @@
-sudo pacman -Syu git htop ranger neovim intellij-idea-community-edition ttf-jetbrains-mono ttf-nerd-fonts-symbols-2048-em-mono noto-fonts-emoji otf-latin-modern otf-latinmodern-math jdk-openjdk maven python python-pip rustup go gcc cmake -y
+sudo pacman -Syu git htop ranger neovim vlc ffmpeg intellij-idea-community-edition ttf-jetbrains-mono ttf-nerd-fonts-symbols-2048-em-mono noto-fonts-emoji otf-latin-modern otf-latinmodern-math jdk-openjdk maven python python-pip rustup go gcc cmake -y
 
 rustup install stable
 
