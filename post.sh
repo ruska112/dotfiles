@@ -1,4 +1,4 @@
-sudo pacman -Syu git htop ranger neovim intellij-idea-community-edition ttf-jetbrains-mono ttf-nerd-fonts-symbols-2048-em-mono noto-fonts-emoji otf-latin-modern otf-latinmodern-math jdk-openjdk maven node rustup go gcc cmake clang llvm -y
+sudo pacman -Syu git htop ranger neovim intellij-idea-community-edition ttf-jetbrains-mono ttf-nerd-fonts-symbols-2048-em-mono noto-fonts-emoji otf-latin-modern otf-latinmodern-math jdk-openjdk maven nodejs rustup go gcc cmake clang llvm -y
 
 rustup install stable
 
@@ -6,7 +6,7 @@ mkdir Source && cd Source
 
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si -y
+makepkg -si
 
 yay -S google-chrome telegram-desktop discord topgrade -y
 
