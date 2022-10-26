@@ -21,11 +21,7 @@ Plug 'https://github.com/ap/vim-css-color'
 Plug 'https://github.com/preservim/nerdtree'
 Plug 'https://github.com/tpope/vim-commentary'
 
-Plug 'https://github.com/neoclide/coc.nvim'
-
 call plug#end()
-
-inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 nnoremap <C-d> :NERDTreeToggle <CR>
 nnoremap <C-t> :terminal fish <CR>
