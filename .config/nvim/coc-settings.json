@@ -1,3 +1,4 @@
 {
-    "java.home": "/usr/lib/jvm/java-19-openjdk/"
+    "java.home": "/usr/lib/jvm/java-19-openjdk/",
+    "rust-analyzer.enable": true
 }
