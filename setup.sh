@@ -1,6 +1,8 @@
 #!/bin/bash
 
-sudo pacman -Syu git htop ranger neovim vlc ffmpeg intellij-idea-community-edition ttf-jetbrains-mono ttf-nerd-fonts-symbols-2048-em-mono noto-fonts-emoji otf-latin-modern otf-latinmodern-math jdk-openjdk maven python python-pip rustup go gcc cmake -y
+sudo pacman -Syu git htop ranger neovim vlc ffmpeg intellij-idea-community-edition -y
+sudo pacman -S ttf-jetbrains-mono ttf-nerd-fonts-symbols-2048-em-mono noto-fonts-emoji otf-latin-modern otf-latinmodern-math -y
+sudo pacman -S jdk-openjdk maven nodejs npm python python-pip rustup go gcc cmake -y
 
 git config --global user.email "karabalin112@gmail.com" && git config --global user.name "Ruslan Karabalin"
 
@@ -11,6 +13,9 @@ mkdir Source && cd Source
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 yay -S google-chrome telegram-desktop discord topgrade -y
 
