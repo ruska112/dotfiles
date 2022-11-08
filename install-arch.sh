@@ -95,6 +95,7 @@ packages=(
     # apps
     fd
     git
+    fish
     htop
     tree
     ranger
