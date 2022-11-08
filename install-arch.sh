@@ -196,12 +196,11 @@ arch-chroot "$MOUNT" bash -c "useradd -m -g users -G wheel -s /bin/fish $USER"
 
 echo "[3]: Set user password.."
 arch-chroot "$MOUNT" bash -c "echo \"$USER:$PASS\" | chpasswd"
-arch-chroot "$MOUNT" bash -c "echo \"$PASS:$PASS\" | passwd"
 
 echo "[3]: Add to sudoers.."
 arch-chroot "$MOUNT" bash -c "chmod 666 /etc/sudoers"
 arch-chroot "$MOUNT" bash -c "sed -i '/^# %wheel ALL=(ALL:ALL) ALL/s/#//' /etc/sudoers"
-arch-chroot "$MOUNT" bash -c "sed -i '/^ %sudo ALL=(ALL:ALL) ALL/s//#&/' /etc/sudoers"
+arch-chroot "$MOUNT" bash -c "sed -i '/^# %sudo ALL=(ALL:ALL) ALL/s//#//' /etc/sudoers"
 arch-chroot "$MOUNT" bash -c "chmod 440 /etc/sudoers"
 
 echo "[3]: Grub install.."
