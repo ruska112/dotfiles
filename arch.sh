@@ -145,6 +145,8 @@ packages=(
     gnome-shell
     gnome-shell-extensions
     gnome-text-editor
+    gnome-tweaks
+    gnome-themes-extra
     gvfs
     gvfs-mtp
     mutter
