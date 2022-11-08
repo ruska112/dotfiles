@@ -4,7 +4,7 @@ set -e
 #####
 #
 # How to use
-#  curl -L -o install.sh https://raw.githubusercontent.com/ruska112/post-install/main/install-arch.sh
+#  curl -L -o install.sh https://raw.githubusercontent.com/ruska112/dotfiles/main/arch.sh
 #  nano install.sh # Change the user, password and device to you
 #  ./install.sh
 #
@@ -90,41 +90,49 @@ packages=(
     efibootmgr
     btrfs-progs
 
-    # apps
+    # console apps
     fd
-    vlc
     git
     fish
     htop
     tree
-    fuse
-    bluez
     unzip
     unrar
-    maven
     ranger
     neovim
-    rustup
     ffmpeg
-    python
     man-db
-    discord
-    ueberzug
-    pipewire
-    neofetch
     man-pages
+    neofetch
+    ueberzug
     reflector
     alacritty
-    python-pip
-    bluez-utils
-    wireplumber
+    
+    # progs
+    rustup
+    maven
     jdk-openjdk
+    python
+    python-pip
+    
+    # drivers
+    bluez
+    bluez-utils
+    pipewire
+    wireplumber
     pipewire-alsa
-    networkmanager
     pipewire-pulse
-    telegram-desktop
+    networkmanager
+   
+    # fonts
     noto-fonts-emoji
     ttf-jetbrains-mono
+    
+    # apps
+    vlc
+    fuse
+    discord
+    telegram-desktop
     intellij-idea-community-edition
     
     #gnome
@@ -199,8 +207,7 @@ arch-chroot "$MOUNT" bash -c "echo \"$USER:$PASS\" | chpasswd"
 
 echo "[3]: Add to sudoers.."
 arch-chroot "$MOUNT" bash -c "chmod 666 /etc/sudoers"
-arch-chroot "$MOUNT" bash -c "sed -i '/^# %wheel ALL=(ALL:ALL) ALL/s/#//' /etc/sudoers"
-arch-chroot "$MOUNT" bash -c "sed -i '/^# %sudo ALL=(ALL:ALL) ALL/s/#//' /etc/sudoers"
+arch-chroot "$MOUNT" bash -c "sed -i '/^ %wheel ALL=(ALL:ALL) ALL/s/#//' /etc/sudoers"
 arch-chroot "$MOUNT" bash -c "chmod 440 /etc/sudoers"
 
 echo "[3]: Grub install.."
