@@ -107,6 +107,7 @@ packages=(
     neofetch
     reflector
     alacritty
+
     bluez
     bluez-utils
     pipewire
@@ -163,7 +164,7 @@ arch-chroot "$MOUNT" bash -c "cat > /etc/hosts << EOF
 EOF"
 
 echo "[3]: Create user.."
-arch-chroot "$MOUNT" bash -c "useradd -m -g users -G wheel -s /bin/zsh $USER"
+arch-chroot "$MOUNT" bash -c "useradd -m -g users -G wheel -s /bin/fish $USER"
 
 echo "[3]: Set user password.."
 arch-chroot "$MOUNT" bash -c "echo \"$USER:$PASS\" | chpasswd"
