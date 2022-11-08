@@ -226,10 +226,6 @@ YAY
 
 echo "[4]: install apps from AUR.."
 
-arch-chroot "$MOUNT" bash -c "yay -S google-chrome topgrade extension-manager"
-
-arch-chroot "$MOUNT" bash -c "git config --global user.email \"karabalin112@gmail.com\" && git config --global user.name \"Ruslan Karabalin\""
-
 echo "
  _____ _       _     _     _
 |  ___(_)_ __ (_)___| |__ | |
