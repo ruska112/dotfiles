@@ -87,39 +87,67 @@ packages=(
 
     # main parts
     grub
-    efibootmgr
     sudo
-    btrfs-progs
     xorg
+    efibootmgr
+    btrfs-progs
 
     # apps
     fd
+    vlc
     git
     fish
     htop
     tree
-    ranger
-    neovim
-    ffmpeg
-    python
-    python-pip
-    man-db
-    man-pages
-    neofetch
-    reflector
-    alacritty
-    networkmanager
+    fuse
     bluez
-    bluez-utils
-    pipewire
-    wireplumber
-    pipewire-alsa
-    pipewire-pulse
-    ttf-jetbrains-mono
     unzip
     unrar
-    fuse
+    maven
+    ranger
+    neovim
+    rustup
+    ffmpeg
+    python
+    man-db
+    discord
+    ueberzug
+    pipewire
+    neofetch
+    man-pages
+    reflector
+    alacritty
+    python-pip
+    bluez-utils
+    wireplumber
+    jdk-openjdk
+    pipewire-alsa
+    networkmanager
+    pipewire-pulse
     telegram-desktop
+    noto-fonts-emoji
+    ttf-jetbrains-mono
+    intellij-idea-community-edition
+    
+    #gnome
+    file-roller
+    gdm
+    gnome-control-center
+    gnome-keyring
+    gnome-session
+    gnome-settings-daemon
+    gnome-shell
+    gnome-shell-extensions
+    gnome-text-editor
+    gvfs
+    gvfs-mtp
+    mutter
+    nautilus
+    
+    #nvidia
+    nvidia
+    nvidia-utils
+    nvidia-settings
 )
 
 
@@ -150,9 +178,10 @@ arch-chroot "$MOUNT" bash -c "hwclock --systohc"
 
 echo "[3]: Locale.."
 
-arch-chroot "$MOUNT" bash -c "echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen"
-arch-chroot "$MOUNT" bash -c "echo 'ru_RU.UTF-8 UTF-8' > /etc/locale.gen"
+arch-chroot "$MOUNT" bash -c "echo 'en_US.UTF-8 UTF-8
+ru_RU.UTF-8 UTF-8' > /etc/locale.gen"
 arch-chroot "$MOUNT" bash -c "locale-gen"
+arch-chroot "$MOUNT" bash -c "echo 'LANG=en_US.UTF-8' > /etc/locale.conf"
 
 echo "[3]: Hostname.."
 
@@ -169,11 +198,11 @@ arch-chroot "$MOUNT" bash -c "useradd -m -g users -G wheel -s /bin/fish $USER"
 
 echo "[3]: Set user password.."
 arch-chroot "$MOUNT" bash -c "echo \"$USER:$PASS\" | chpasswd"
-arch-chroot "$MOUNT" bash -c "passwd -l root"
+arch-chroot "$MOUNT" bash -c "echo \"$PASS\" | passwd"
 
 echo "[3]: Add to sudoers.."
 arch-chroot "$MOUNT" bash -c "chmod 666 /etc/sudoers"
-arch-chroot "$MOUNT" bash -c "sed -i '/^# %wheel ALL=(ALL:ALL)/s/#//' /etc/sudoers"
+arch-chroot "$MOUNT" bash -c "sed -i '/^ %wheel ALL=(ALL:ALL)/s/#&/' /etc/sudoers"
 arch-chroot "$MOUNT" bash -c "sed -i '/^# %sudo ALL=(ALL:ALL)/s/#//' /etc/sudoers"
 arch-chroot "$MOUNT" bash -c "chmod 440 /etc/sudoers"
 
@@ -183,6 +212,7 @@ arch-chroot "$MOUNT" bash -c "grub-mkconfig -o /boot/grub/grub.cfg"
 
 echo "[3]: Systemd.."
 arch-chroot "$MOUNT" bash -c "systemctl enable fstrim.timer"
+arch-chroot "$MOUNT" bash -c "systemctl enable gdm"
 arch-chroot "$MOUNT" bash -c "systemctl enable NetworkManager"
 
 echo "[3]: install yay.."
@@ -197,10 +227,11 @@ rm -rf /tmp/yay
 YAY
 )
 
-arch-chroot "$MOUNT" bash -c "chmod 666 /etc/sudoers"
-arch-chroot "$MOUNT" bash -c "sed -i '/^ %wheel ALL=(ALL) NOPASSWD: ALL/s//#&/' /etc/sudoers"
-arch-chroot "$MOUNT" bash -c "sed -i '/^# %wheel ALL=(ALL) ALL/s/#//' /etc/sudoers"
-arch-chroot "$MOUNT" bash -c "chmod 440 /etc/sudoers"
+echo "[4]: install apps from AUR.."
+
+arch-chroot "$MOUNT" bash -c "yay -S google-chrome topgrade extension-manager"
+
+arch-chroot "$MOUNT" bash -c "git config --global user.email \"karabalin112@gmail.com\" && git config --global user.name \"Ruslan Karabalin\""
 
 echo "
  _____ _       _     _     _
