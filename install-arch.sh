@@ -33,6 +33,8 @@ EOF
 
 echo "[1]: Disk prepare"
 
+wipefs --all "$DEV"
+
 parted "$DEV" <<< "$parted_commands"
 
 echo "[1]: Disk parted"
@@ -142,9 +144,6 @@ echo "[3]: arch-chroot start"
 
 echo "[3]: Time.."
 arch-chroot "$MOUNT" bash -c "ln -sf /usr/share/zoneinfo/Asia/Almaty /etc/localtime"
-
-arch-chroot "$MOUNT" bash -c "ln -sf /usr/share/zoneinfo/Asia/Almaty /etc/localtime"
-arch-chroot "$MOUNT" bash -c "timedatectl set-ntp on"
 arch-chroot "$MOUNT" bash -c "hwclock --systohc"
 
 echo "[3]: Locale.."
