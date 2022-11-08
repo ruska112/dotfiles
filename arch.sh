@@ -206,11 +206,12 @@ arch-chroot "$MOUNT" bash -c "useradd -m -g users -G wheel -s /bin/fish $USER"
 
 echo "[3]: Set user password.."
 arch-chroot "$MOUNT" bash -c "echo \"$USER:$PASS\" | chpasswd"
+arch-chroot "$MOUNT" bash -c "echo \"$USER\" | su -l root"
 
 echo "[3]: Add to sudoers.."
 arch-chroot "$MOUNT" bash -c "chmod 666 /etc/sudoers"
-arch-chroot "$MOUNT" bash -c "sed 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers"
-arch-chroot "$MOUNT" bash -c "sed 's/# %sudo ALL=(ALL:ALL) ALL/%sudo ALL=(ALL:ALL) ALL/' /etc/sudoers"
+arch-chroot "$MOUNT" bash -c "echo '%wheel ALL=(ALL:ALL) All
+%sudo ALL=(ALL:ALL) ALL' > /etc/sudoers"
 arch-chroot "$MOUNT" bash -c "chmod 440 /etc/sudoers"
 
 echo "[3]: Grub install.."
