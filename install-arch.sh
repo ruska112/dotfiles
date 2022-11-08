@@ -4,7 +4,7 @@ set -e
 #####
 #
 # How to use
-#  curl -L -o install.sh https://bit.ly/2YLvWO1
+#  curl -L -o install.sh https://github.com/ruska112/post-install/install-arch.sh
 #  nano install.sh # Change the user, password and device to you
 #  ./install.sh
 #
