@@ -33,8 +33,6 @@ EOF
 
 echo "[1]: Disk prepare"
 
-wipefs --all "$DEV"
-
 parted "$DEV" <<< "$parted_commands"
 
 echo "[1]: Disk parted"
@@ -47,7 +45,7 @@ part_prefix="${part_prefix}p"
 fi
 
 mkfs.fat -F32 -n ESP "${part_prefix}1"
-mkfs.btrfs -L Linux "${part_prefix}2"
+mkfs.btrfs -f -L Linux "${part_prefix}2"
 
 echo "[1]: Created FS"
 
