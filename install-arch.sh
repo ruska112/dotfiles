@@ -107,7 +107,7 @@ packages=(
     neofetch
     reflector
     alacritty
-
+    networkmanager
     bluez
     bluez-utils
     pipewire
