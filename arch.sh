@@ -133,7 +133,6 @@ packages=(
     fuse
     discord
     telegram-desktop
-    intellij-idea-community-edition
     
     #gnome
     file-roller
