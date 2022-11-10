@@ -222,6 +222,7 @@ echo "[3]: Systemd.."
 arch-chroot "$MOUNT" bash -c "systemctl enable fstrim.timer"
 arch-chroot "$MOUNT" bash -c "systemctl enable gdm"
 arch-chroot "$MOUNT" bash -c "systemctl enable NetworkManager"
+arch-chroot "$MOUNT" bash -c "systemctl enable bluetooth"
 
 echo "[3]: install yay.."
 
