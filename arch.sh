@@ -144,6 +144,7 @@ packages=(
     gnome-shell
     gnome-shell-extensions
     gnome-text-editor
+    eog
     evince
     gnome-tweaks
     gnome-themes-extra
