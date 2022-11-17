@@ -112,7 +112,6 @@ packages=(
     rustup
     maven
     jdk-openjdk
-    python
     python-pip
     
     # drivers
