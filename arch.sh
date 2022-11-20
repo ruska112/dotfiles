@@ -216,7 +216,7 @@ arch-chroot "$MOUNT" bash -c "echo 'root ALL=(ALL:ALL) ALL
 arch-chroot "$MOUNT" bash -c "chmod 440 /etc/sudoers"
 
 echo "[3]: Grub install.."
-arch-chroot "$MOUNT" bash -c "grub-install --target=x86_64-efi --efi-directory=/boot/efi"
+arch-chroot "$MOUNT" bash -c "grub-install --target=x86_64-efi --bootloader-id=Arch --efi-directory=/boot/efi"
 arch-chroot "$MOUNT" bash -c "grub-mkconfig -o /boot/grub/grub.cfg"
 
 echo "[3]: Systemd.."
