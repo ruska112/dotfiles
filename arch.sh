@@ -141,7 +141,6 @@ packages=(
     gnome-session
     gnome-settings-daemon
     gnome-shell
-    gnome-shell-extensions
     gnome-text-editor
     eog
     evince
